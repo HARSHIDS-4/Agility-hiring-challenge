@@ -12,32 +12,20 @@ st.set_page_config(page_title="Builder School in a Box", page_icon="🚀", layou
 # ─────────────────────────────────────────────
 # SIDEBAR — API KEY + STAGE TRACKER
 # ─────────────────────────────────────────────
+# API KEY — paste your Groq key here
+# ─────────────────────────────────────────────
+GROQ_API_KEY = "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"   # ← replace this with your actual key
+
+client = Groq(api_key=GROQ_API_KEY)
+MODEL = "llama-3.3-70b-versatile"   # best free model on Groq — 70B, fast, great at JSON
+
+# Sidebar — only progress tracker, no key input
 with st.sidebar:
-    st.header("⚙️ Configuration")
-    api_key_input = st.text_input(
-        "Groq API Key",
-        type="password",
-        placeholder="gsk_...",
-        help="Free at console.groq.com — no card needed."
-    )
-    st.caption("Get a free key at console.groq.com")
-    st.divider()
-    st.markdown("**Progress**")
+    st.header("⚙️ Progress")
     current_stage = st.session_state.get("stage", 1) or 1
     for i, label in enumerate(["Idea Input", "Refinement", "Mentor Session", "Score & Blueprint", "Prototype"], 1):
         icon = "✅" if current_stage > i else ("🔵" if current_stage == i else "⬜")
         st.markdown(f"{icon} Step {i}: {label}")
-
-# Resolve API key: sidebar > environment
-resolved_key = api_key_input.strip() if api_key_input.strip() else os.environ.get("GROQ_API_KEY", "")
-
-if not resolved_key:
-    st.warning("⬅️ Enter your Groq API key in the sidebar to get started.")
-    st.caption("No card needed. Sign up free at console.groq.com")
-    st.stop()
-
-client = Groq(api_key=resolved_key)
-MODEL = "llama-3.3-70b-versatile"   # best free model on Groq — 70B, fast, great at JSON
 
 # ─────────────────────────────────────────────
 # SESSION STATE INIT
