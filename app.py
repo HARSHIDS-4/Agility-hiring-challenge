@@ -14,7 +14,7 @@ st.set_page_config(page_title="Builder School in a Box", page_icon="🚀", layou
 # ─────────────────────────────────────────────
 # API KEY — paste your Groq key here
 # ─────────────────────────────────────────────
-GROQ_API_KEY = "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"   # ← replace this with your actual key
+GROQ_API_KEY = "enter you key "   # ← replace this with your actual key
 
 client = Groq(api_key=GROQ_API_KEY)
 MODEL = "llama-3.3-70b-versatile"   # best free model on Groq — 70B, fast, great at JSON
