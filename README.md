@@ -185,7 +185,7 @@ Run the app:
 streamlit run app.py
 ```
 
-Add your Groq API key in the sidebar.
+Add your Groq API key in line 17 of app.py file (edit: "enter your api key").
 
 Free API key available at:
 https://console.groq.com
